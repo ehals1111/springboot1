@@ -32,8 +32,10 @@ public class User {
 	/*
 	 * camel case: 단어를 표기 할때 첫 문자는 소문자로 시작하며 띄어쓰기 대신 (대문자)로 단어를 구분 
 	 * java의 변수를 선언할때 camelCase로 선언한다
+	 * ex)phoneNumber, createAt,updatedAt
 	 * 
-	 * 
+	 * Snake Case: 단어를 표기할때 모두 소문자로 표기하며, 띄어쓰기 대신 (_) 로 표기 db컬럼에 사용함
+	 * ex)phone_number,created_at,updated_at
 	 */
 	
 	
