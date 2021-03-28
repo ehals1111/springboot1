@@ -1,0 +1,12 @@
+
+CREATE DATABASE study CHARACTER SET UTF8;
+
+create table User(
+id bigint(20) primary key auto_increment,
+account varchar(45) not null,
+email varchar(45),
+phone_number varchar(45),
+updated_at DATETIME not null
+created_by varchar(45) not null,
+updated_at DATETIME,
+updated_by varchar(45));

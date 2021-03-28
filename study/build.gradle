@@ -23,6 +23,11 @@ dependencies {
 	 compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     //lombok----------------------------------------
+    
+    //jpa mysql----------------------------------------
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('mysql:mysql-connector-java')
+    //jpa mysql----------------------------------------
 }
 
 test {
