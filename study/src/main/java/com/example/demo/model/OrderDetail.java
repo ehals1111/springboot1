@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity//order_detail Å×ÀÌºí ÀÚµ¿ ¿¬°á
+@Entity//order_detail í…Œì´ë¸” ìë™ì—°ê²°
 public class OrderDetail {
 
 	private Long id;
