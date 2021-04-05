@@ -1,6 +1,6 @@
 
 
---- 워밍업 -------
+--- test -------
 CREATE DATABASE study CHARACTER SET UTF8;
 
 create table User(
@@ -13,9 +13,9 @@ created_by varchar(45) not null,
 updated_at DATETIME,
 updated_by varchar(45));
 
---- 워밍업 -------
+--- test -------
 
-----어드민 페이지 만들기 sql문 ------
+----admin page  sql ------
 
 -- MySQL Workbench Forward Engineering
 
