@@ -1,15 +1,19 @@
 package com.example.demo.repository;
 
 
+import java.nio.channels.AsynchronousServerSocketChannel;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.StudyApplicationTests;
 import com.example.demo.model.User;
+
+import junit.framework.Assert;
 
 
 
@@ -48,6 +52,8 @@ public class UserRepositoryTest extends StudyApplicationTests{
 		);
 	}
 	
+	@Test
+	@Transactional
 	public void update() {
 		Optional<User> user =userRepository.findById(2L); //특정 유저를 셀렉트 해준다 그래야 특정유저를 수정할수 있기때문에
 		user.ifPresent(selectUser ->{
@@ -60,7 +66,24 @@ public class UserRepositoryTest extends StudyApplicationTests{
 		);
 	}
 	
+	@Test
+	@Transactional //실행을 하더라도 마지막에 롤백 해줌..
 	public void delete() {
+		Optional<User> user =userRepository.findById(2L);
 		
+		Assert.assertTrue(user.isPresent());
+		
+		user.ifPresent(selectUser->{
+			userRepository.delete(selectUser);
+		});
+		
+		Optional<User> deleteUser =userRepository.findById(2L);
+		
+		Assert.assertFalse(deleteUser.isPresent());
+		/*if(deleteUser.isPresent()) {
+			System.out.println("데이터 존재: "+deleteUser.get());
+		}else{
+			System.out.println("데이터 삭제 확인 ");
+		}*/
 	}
 }
