@@ -5,22 +5,24 @@ plugins {
 }
 
 group = 'com.example'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1-SNAPSHOT' 
 sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
-	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/milestone' } 
 	maven { url 'https://repo.spring.io/snapshot' }
 }
 
-dependencies {
+dependencies { 
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+		exclude group: 'org.junit.vintage', module: 'junit-vintage- engine'
 	}
-	//lombok----------------------------------------
-	 compileOnly 'org.projectlombok:lombok'
+
+	
+	//lombok---------------------------------------- 
+	compileOnly 'org.projectlombok:lombok'  
     annotationProcessor 'org.projectlombok:lombok'
     //lombok----------------------------------------
     

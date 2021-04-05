@@ -11,9 +11,11 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor //기본 생성자
 @Entity // == table;
 //@Table(name="user")
 public class User {
