@@ -13,7 +13,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+@Data  //lombok에서 자동으로 toString 을 해줌
 @AllArgsConstructor
 @NoArgsConstructor //기본 생성자
 @Entity // == table;
