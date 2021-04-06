@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor //기본생성자
 @Entity // == table;
 //@Table(name="user")
-public class User {
+public class User { 
 	
 	@Id //primarykey
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //mysql 사용하기에 identity를 사용

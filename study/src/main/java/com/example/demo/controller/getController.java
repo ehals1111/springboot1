@@ -25,7 +25,7 @@ public class getController {
 	public String getParameter(@RequestParam String id,@RequestParam(name="password") String pwd) {
 		
 		return id+pwd;
-	}
+	} 
 	
 	@GetMapping("/getMultiParameter")
 	public SearchParam getMultiParameter(SearchParam searchParam) {

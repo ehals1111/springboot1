@@ -6,7 +6,7 @@ import lombok.Data;
 @AllArgsConstructor // 모든 변수를 가진 생성자 추가
 public class SearchParam {
 	
-	
+	 
 	private String account;
 	private String email;
 	private int page;

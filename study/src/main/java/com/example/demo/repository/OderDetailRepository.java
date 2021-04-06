@@ -9,3 +9,4 @@ import com.example.demo.model.OrderDetail;
 public interface OderDetailRepository extends JpaRepository<OrderDetail, Long>{
 
 }
+ 

@@ -39,16 +39,16 @@ public class UserRepositoryTest extends StudyApplicationTests{
 		System.out.println("newUser "+newUser);
 	}
 	
-	@Test
+	@Test 
 	public void read() {
 		Optional<User> user =userRepository.findById(2L);
-		
+		 
 		//ifPresent 있을때만 값을..
 		user.ifPresent(selectUser ->{
 			System.out.println("user: "+selectUser);
 			System.out.println("user: "+selectUser.getEmail());
 			}
-		);
+		); 
 	}
 	
 	@Test

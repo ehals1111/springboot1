@@ -29,5 +29,5 @@ public class OderDetailRepositoryTest extends StudyApplicationTests{
 		OrderDetail newOderDetail= orderDetailRepository.save(orderDetail);
 		Assert.assertNotNull(newOderDetail);
 		
-	}
+	} 
 }
