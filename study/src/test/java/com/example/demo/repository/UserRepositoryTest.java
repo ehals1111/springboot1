@@ -42,7 +42,10 @@ public class UserRepositoryTest extends StudyApplicationTests{
 	
 	@Test 
 	public void read() {
-		Optional<User> user =userRepository.findById(2L);
+		
+		//findById  = select * from user where id=?
+		//Optional<User> user =userRepository.findById(2L);
+		Optional<User> user =userRepository.findByAccount("Test07");
 		 
 		//ifPresent 있을때만 값을..
 		user.ifPresent(selectUser ->{
