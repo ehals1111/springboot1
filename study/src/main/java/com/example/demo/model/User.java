@@ -1,13 +1,15 @@
 package com.example.demo.model;
 
-import java.time.LocalDateTime;
 
-import javax.persistence.Column;
+import java.time.LocalDateTime;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -48,5 +50,8 @@ public class User {
 	private LocalDateTime updatedAt;
 	
 	private String updatedBy;
+	//user 입장에선 자신이 1이고 orderDetail은 n이다.
 	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")//mappedBy = "user" OrderDetail클래스 안에 user변수를 매칭 시키겠다
+	private List<OrderDetail> orderDetailList;
 }

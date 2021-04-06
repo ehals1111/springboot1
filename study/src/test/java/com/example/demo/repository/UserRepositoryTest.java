@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.StudyApplicationTests;
+import com.example.demo.model.Item;
 import com.example.demo.model.User;
 
 
@@ -45,8 +46,13 @@ public class UserRepositoryTest extends StudyApplicationTests{
 		 
 		//ifPresent 있을때만 값을..
 		user.ifPresent(selectUser ->{
-			System.out.println("user: "+selectUser);
-			System.out.println("user: "+selectUser.getEmail());
+			//System.out.println("user: "+selectUser);
+			//System.out.println("user: "+selectUser.getEmail());
+			selectUser.getOrderDetailList().stream().forEach(detail ->{
+				Item item = detail.getItem();
+				System.out.println(detail.getItem());
+				
+			});
 			}
 		); 
 	}
