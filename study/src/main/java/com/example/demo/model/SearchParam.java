@@ -2,8 +2,8 @@ package com.example.demo.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-@Data //±âº» »ı¼ºÀÚ¿Í get set¸¦ ¸¸µé¾îÁÜ..
-@AllArgsConstructor // ¸ğµç º¯¼ö¸¦ °¡Áø »ı¼ºÀÚ Ãß°¡
+@Data //ê¸°ë³¸ ìƒì„±ìì™€ get setë¥¼ ë§Œë“¤ì–´ì¤Œ..
+@AllArgsConstructor // ëª¨ë“  ë³€ìˆ˜ë¥¼ ê°€ì§„ ìƒì„±ì ì¶”ê°€
 public class SearchParam {
 	
 	

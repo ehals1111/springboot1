@@ -1,13 +1,13 @@
 package com.example.demo.repository;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.demo.StudyApplicationTests;
 import com.example.demo.model.Item;
-import com.sun.el.stream.Optional;
 
-import junit.framework.Assert;
+
 
 public class ItemRepositoryTest extends StudyApplicationTests{
 
@@ -18,9 +18,9 @@ public class ItemRepositoryTest extends StudyApplicationTests{
 	public void create() {
 		
 		Item item = new Item();
-		item.setName("≥Î∆Æ∫œ");
+		item.setName("ÎÖ∏Ìä∏Î∂Å");
 		item.setPrice(100000);
-		item.setContent("ªÔº∫ ≥Î∆Æ∫œ");
+		item.setContent("ÏÇºÏÑ± ÎÖ∏Ìä∏Î∂Å");
 		
 		Item newItem = itemRepsotory.save(item);
 		Assert.assertNotNull(newItem);

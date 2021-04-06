@@ -8,5 +8,5 @@ import com.example.demo.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
 	
-	// JpaRepository<User << Å×ÀÌºí¿¡ °ü·ÃµÈ model¸í ,Long   << Å×ÀÌºíÀÇ primarykeyÀÇ µ¥ÀÌÅÍ Å¸ÀÔ>
+	// JpaRepository<User << í…Œì´ë¸”ì— ê´€ë ¨ëœ modelëª… ,Long   << í…Œì´ë¸”ì˜ primarykeyì˜ ë°ì´í„° íƒ€ìž…>
 }	

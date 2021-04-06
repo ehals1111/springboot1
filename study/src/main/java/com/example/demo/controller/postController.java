@@ -13,7 +13,7 @@ import com.example.demo.model.SearchParam;
 public class postController {
 
 	// Html<form>
-	//ajax 검색
+	//ajax 
 	// http post body -> data
 	// json, xml , multipart -form / text-plain
 	
@@ -22,7 +22,7 @@ public class postController {
 		
 		return searchParam;
 	}
-	//구글 확장프로그램  rest client
+	// rest client
 	
 	/*{ "account" : "aaaa",
 		"email" : "pppaa@naver.com",

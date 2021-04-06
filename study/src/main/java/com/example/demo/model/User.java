@@ -13,33 +13,33 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data  //lombok¿¡¼­ ÀÚµ¿À¸·Î toString À» ÇØÁÜ
+@Data  //lombokì—ì„œ ìë™ìœ¼ë¡œ toString ì„ í•´ì¤Œ
 @AllArgsConstructor
-@NoArgsConstructor //±âº» »ı¼ºÀÚ
+@NoArgsConstructor //ê¸°ë³¸ìƒì„±ì
 @Entity // == table;
 //@Table(name="user")
 public class User {
 	
 	@Id //primarykey
-	@GeneratedValue(strategy = GenerationType.IDENTITY) //mysql »ç¿ëÇÏ±â¿¡ identity¸¦ »ç¿ë
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //mysql ì‚¬ìš©í•˜ê¸°ì— identityë¥¼ ì‚¬ìš©
 	private Long id;
 	
-	//@Column(name="account")Ä®·³°ú ºñ½ÁÇÏ¸é ¾ÈÇØÁàµµ µÊ
+	//@Column(name="account")ì¹¼ëŸ¼ê³¼ ë¹„ìŠ·í•˜ë©´ ì•ˆí•´ì¤˜ë„ ë¨
 	private String account;
 	
 	private String email;
 	
-	private String phoneNumber;//jpa ¿¡¼­ ÀÚµ¿À¸·Î ¸ÅÄª ÇØÁÜ..
+	private String phoneNumber;//jpa ì—ì„œ ìë™ìœ¼ë¡œ ë§¤ì¹­ í•´ì¤Œ..
 	
 	/*
-	 * camel case: ´Ü¾î¸¦ Ç¥±â ÇÒ¶§ Ã¹ ¹®ÀÚ´Â ¼Ò¹®ÀÚ·Î ½ÃÀÛÇÏ¸ç ¶ç¾î¾²±â ´ë½Å (´ë¹®ÀÚ)·Î ´Ü¾î¸¦ ±¸ºĞ 
-	 * javaÀÇ º¯¼ö¸¦ ¼±¾ğÇÒ¶§ camelCase·Î ¼±¾ğÇÑ´Ù
+	 * camel case: ë‹¨ì–´ë¥¼ í‘œê¸° í• ë•Œ ì²« ë¬¸ìëŠ” ì†Œë¬¸ìë¡œ ì‹œì‘í•˜ë©° ë„ì–´ì“°ê¸° ëŒ€ì‹  (ëŒ€ë¬¸ì)ë¡œ ë‹¨ì–´ë¥¼ êµ¬ë¶„ 
+	 * javaì˜ ë³€ìˆ˜ë¥¼ ì„ ì–¸í• ë•Œ camelCaseë¡œ ì„ ì–¸í•œë‹¤
 	 * ex)phoneNumber, createAt,updatedAt
 	 * 
-	 * Snake Case: ´Ü¾î¸¦ Ç¥±âÇÒ¶§ ¸ğµÎ ¼Ò¹®ÀÚ·Î Ç¥±âÇÏ¸ç, ¶ç¾î¾²±â ´ë½Å (_) ·Î Ç¥±â dbÄÃ·³¿¡ »ç¿ëÇÔ
+	 * 
+	 * Snake Case: ë‹¨ì–´ë¥¼ í‘œê¸°í• ë•Œ ëª¨ë‘ ì†Œë¬¸ìë¡œ í‘œê¸°í•˜ë©°, ë„ì–´ì“°ê¸° ëŒ€ì‹  (_) ë¡œ í‘œê¸° dbì»¬ëŸ¼ì— ì‚¬ìš©í•¨
 	 * ex)phone_number,created_at,updated_at
 	 */
-	
 	
 	private LocalDateTime createdAt;
 	

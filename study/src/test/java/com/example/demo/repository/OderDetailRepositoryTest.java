@@ -20,9 +20,10 @@ public class OderDetailRepositoryTest extends StudyApplicationTests{
 		
 		orderDetail.setOrderAt(LocalDateTime.now());
 		
-		//¾î¶²»ç¶÷?
+		//ì–´ë–¤ ì‚¬ëŒ?
 		orderDetail.setUserId(7L);
-		//¾î¶²»óÇ°?
+		
+		//ì–´ë–¤ ìƒí’ˆ?
 		orderDetail.setItemId(1L);
 		
 		OrderDetail newOderDetail= orderDetailRepository.save(orderDetail);

@@ -1,35 +1,34 @@
 package com.example.demo.repository;
 
 
-import java.nio.channels.AsynchronousServerSocketChannel;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.StudyApplicationTests;
 import com.example.demo.model.User;
 
-import junit.framework.Assert;
+
 
 
 
 public class UserRepositoryTest extends StudyApplicationTests{
 	
-	@Autowired//DI ÀÇÁ¸¼º ÁÖÀÔ.. Dependency Injection
+	@Autowired//DI ì˜ì¡´ì„± ì£¼ì….. Dependency Injection
 	private UserRepository userRepository ;
 	
 	
-	//junit ¿¡·¯  ÇØ°áÀ» ¸øÇÔ ¹ØÀÇ ÁÖ¼Ò·Î Ã£¾Æ µé¾î°¡º¸´Ï Å¬·¡½º°¡ ¾øÀ½..
-	//java.lang.NoClassDefFoundError: 
-	//org/junit/platform/commons/util/ClassNamePatternFilterUtilsjava.lang.NoClassDefFoundError: org/junit/platform/commons/util/ClassNamePatternFilterUtils
+	//junit ì—ëŸ¬  í•´ê²°ì„ ëª»í•¨ ë°‘ì˜ ì£¼ì†Œë¡œ ì°¾ì•„ ë“¤ì–´ê°€ë³´ë‹ˆ í´ë˜ìŠ¤ê°€ ì—†ìŒ..
+		//java.lang.NoClassDefFoundError: 
+		//org/junit/platform/commons/util/ClassNamePatternFilterUtilsjava.lang.NoClassDefFoundError: org/junit/platform/commons/util/ClassNamePatternFilterUtils
 	public void create() {
 		
 		User user = new User();
-		//user.setId(); auto increment ¶ó ÇÊ¿ä¾øÀ½;
+		//user.setId(); auto increment ë¼ í•„ìš”ì—†ìŒ;
 		user.setAccount("testuser01");
 		user.setEmail("testuser01@gmail.com");
 		user.setPhoneNumber("010-111-1111");
@@ -44,7 +43,7 @@ public class UserRepositoryTest extends StudyApplicationTests{
 	public void read() {
 		Optional<User> user =userRepository.findById(2L);
 		
-		//ifPresent ÀÖÀ»¶¼¸¸ °ªÀ» ..
+		//ifPresent ìˆì„ë•Œë§Œ ê°’ì„..
 		user.ifPresent(selectUser ->{
 			System.out.println("user: "+selectUser);
 			System.out.println("user: "+selectUser.getEmail());
@@ -55,7 +54,7 @@ public class UserRepositoryTest extends StudyApplicationTests{
 	@Test
 	@Transactional
 	public void update() {
-		Optional<User> user =userRepository.findById(2L); //Æ¯Á¤ À¯Àú¸¦ ¼¿·ºÆ® ÇØÁØ´Ù ±×·¡¾ß Æ¯Á¤À¯Àú¸¦ ¼öÁ¤ÇÒ¼ö ÀÖ±â¶§¹®¿¡
+		Optional<User> user =userRepository.findById(2L); //íŠ¹ì • ìœ ì €ë¥¼ ì…€ë ‰íŠ¸ í•´ì¤€ë‹¤ ê·¸ë˜ì•¼ íŠ¹ì •ìœ ì €ë¥¼ ìˆ˜ì •í• ìˆ˜ ìˆê¸°ë•Œë¬¸ì—
 		user.ifPresent(selectUser ->{
 			selectUser.setAccount("pppp");
 			selectUser.setUpdatedAt(LocalDateTime.now());
@@ -67,7 +66,7 @@ public class UserRepositoryTest extends StudyApplicationTests{
 	}
 	
 	@Test
-	@Transactional //½ÇÇàÀ» ÇÏ´õ¶óµµ ¸¶Áö¸·¿¡ ·Ñ¹é ÇØÁÜ..
+	@Transactional //ì‹¤í–‰ì„ í•˜ë”ë¼ë„ ë§ˆì§€ë§‰ì— ë¡¤ë°± í•´ì¤Œ..
 	public void delete() {
 		Optional<User> user =userRepository.findById(2L);
 		
@@ -81,9 +80,9 @@ public class UserRepositoryTest extends StudyApplicationTests{
 		
 		Assert.assertFalse(deleteUser.isPresent());
 		/*if(deleteUser.isPresent()) {
-			System.out.println("µ¥ÀÌÅÍ Á¸Àç: "+deleteUser.get());
+			System.out.println("ë°ì´í„° ì¡´ì¬: "+deleteUser.get());
 		}else{
-			System.out.println("µ¥ÀÌÅÍ »èÁ¦ È®ÀÎ ");
+			System.out.println("í…Œì´í„° ì‚­ì œ í™•ì¸");
 		}*/
 	}
 }

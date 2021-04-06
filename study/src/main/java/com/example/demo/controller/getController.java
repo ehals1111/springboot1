@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.SearchParam;
 
-@RestController //ÀÌ Å¬·¡½º´Â ÄÜÆ®·Ñ·¯´Ù.
+@RestController //ì´ í´ë˜ìŠ¤ëŠ” ì»¨íŠ¸ë¡¤ëŸ¬ë‹¤
 @RequestMapping("/api") // localhost:8080/api
 public class getController {
 
@@ -21,7 +21,7 @@ public class getController {
 	
 	 
 	@GetMapping("/getParameter")//http://localhost:8080/api/getParameter?id=wadasd&password=asdasdsa 
-	//@RequestParam(name="password") password¶ó´Â ÀÌ¸§À¸·Î °ªÀ» º¸³»°Ú´Ù°í ¼³Á¤ÇÏ´Â. 
+	//@RequestParam(name="password")  passwordë¼ëŠ” ì´ë¦„ìœ¼ë¡œ ê°’ì„ ë³´ë‚´ê² ë‹¤ê³  ì„¤ì •í•˜ëŠ”. 
 	public String getParameter(@RequestParam String id,@RequestParam(name="password") String pwd) {
 		
 		return id+pwd;
