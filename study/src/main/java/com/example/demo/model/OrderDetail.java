@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor 
-@Entity//order_detail 자동으로 바뀜
+@AllArgsConstructor
+@Entity//order_detail 테이블 자동연결
 public class OrderDetail {
-
+ 
 	private Long id;
 	
 	private LocalDateTime orderAt;
