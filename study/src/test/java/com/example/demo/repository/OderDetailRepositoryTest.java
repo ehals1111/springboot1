@@ -11,12 +11,12 @@ import com.example.demo.model.OrderDetail;
 
 public class OderDetailRepositoryTest extends StudyApplicationTests{
 	
-	@Autowired
-	private OderDetailRepository orderDetailRepository;
+	//@Autowired
+	//private OderDetailRepository orderDetailRepository;
 	
 	@Test
-	public void create() {
-		OrderDetail orderDetail= new OrderDetail();
+	public void create() { 
+		//OrderDetail orderDetail= new OrderDetail();
 		
 		//orderDetail.setOrderAt(LocalDateTime.now());
 		
@@ -26,8 +26,8 @@ public class OderDetailRepositoryTest extends StudyApplicationTests{
 		//어떤 상품?
 		//orderDetail.setItemId(1L);
 		
-		OrderDetail newOderDetail= orderDetailRepository.save(orderDetail);
-		Assert.assertNotNull(newOderDetail);
-		
+	//OrderDetail newOderDetail= orderDetailRepository.save(orderDetail);
+		//Assert.assertNotNull(newOderDetail);
+		System.out.println("1");
 	} 
 }

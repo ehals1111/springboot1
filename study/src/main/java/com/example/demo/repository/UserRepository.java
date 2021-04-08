@@ -9,7 +9,7 @@ import com.example.demo.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
-	
+	/*
 	// JpaRepository<User << 테이블에 관련된 model명 ,Long   << 테이블의 primarykey의 데이터 타입>
 	
 	//select * from user where account = ?
@@ -20,5 +20,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
 	
 	//여러가지 검색
 	//select * from user where account = ? and email=?
-	Optional<User> findBYAccountAndEmail(String account, String email);
+	Optional<User> findByAccountAndEmail(String account, String email);
+	*/
 }	

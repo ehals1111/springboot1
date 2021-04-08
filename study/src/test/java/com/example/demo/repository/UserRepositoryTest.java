@@ -26,18 +26,21 @@ public class UserRepositoryTest extends StudyApplicationTests{
 	//junit 에러  해결을 못함 밑의 주소로 찾아 들어가보니 클래스가 없음..
 		//java.lang.NoClassDefFoundError: 
 		//org/junit/platform/commons/util/ClassNamePatternFilterUtilsjava.lang.NoClassDefFoundError: org/junit/platform/commons/util/ClassNamePatternFilterUtils
+	@Test
 	public void create() {
 		
 		User user = new User();
 		//user.setId(); auto increment 라 필요없음;
 		user.setAccount("testuser01");
 		user.setEmail("testuser01@gmail.com");
+		user.setStatus("aaa");
+		user.setPassword("123123123");
 		user.setPhoneNumber("010-111-1111");
 		user.setCreatedAt(LocalDateTime.now());
 		user.setCreatedBy("admin");
 		
 		User newUser = userRepository.save(user);
-		System.out.println("newUser "+newUser);
+		System.out.println("newUser=  "+newUser);
 	}
 	
 	@Test 
@@ -45,19 +48,19 @@ public class UserRepositoryTest extends StudyApplicationTests{
 		
 		//findById  = select * from user where id=?
 		//Optional<User> user =userRepository.findById(2L);
-		Optional<User> user =userRepository.findByAccount("Test07");
+		//Optional<User> user =userRepository.findByAccount("Test07");
 		 
 		//ifPresent 있을때만 값을..
-		user.ifPresent(selectUser ->{
+		//user.ifPresent(selectUser ->{
 			//System.out.println("user: "+selectUser);
 			//System.out.println("user: "+selectUser.getEmail());
-			selectUser.getOrderDetailList().stream().forEach(detail ->{
+			//selectUser.getOrderDetailList().stream().forEach(detail ->{
 				//Item item = detail.getItem();
 				//System.out.println(detail.getItem());
 				
-			});
-			}
-		); 
+			//});
+			//}
+		//); 
 	}
 	
 	@Test

@@ -50,8 +50,8 @@ public class User {
 	private String updatedBy;
 	//user 입장에선 자신이 1이고 orderDetail은 n이다.
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")//mappedBy = "user" OrderDetail클래스 안에 user변수를 매칭 시키겠다
-	private List<OrderDetail> orderDetailList;
+	//@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")//mappedBy = "user" OrderDetail클래스 안에 user변수를 매칭 시키겠다
+	//private List<OrderDetail> orderDetailList;
 	
 	
 	/*
