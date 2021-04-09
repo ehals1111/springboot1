@@ -47,6 +47,7 @@ public class Item {
 	
 	private String updatedBy;
 	
+	private Long partnerId;
 	
 	//자신 1 : N  OrderDetail
 	
