@@ -5,12 +5,12 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.junit.Assert;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import com.example.demo.StudyApplicationTests;
-import com.example.demo.model.Item;
+
 import com.example.demo.model.User;
 
 
@@ -26,9 +26,34 @@ public class UserRepositoryTest extends StudyApplicationTests{
 	//junit 에러  해결을 못함 밑의 주소로 찾아 들어가보니 클래스가 없음..
 		//java.lang.NoClassDefFoundError: 
 		//org/junit/platform/commons/util/ClassNamePatternFilterUtilsjava.lang.NoClassDefFoundError: org/junit/platform/commons/util/ClassNamePatternFilterUtils
-	@Test
+	//@Test
 	public void create() {
+		String account = "Test01";
+		String password= "Test01";
+		String status ="REGISTERED";
+		String email = "Test01@gmail.com";
+		String phoneNumber = "010-1111-2222";
+		LocalDateTime registeredAt=LocalDateTime.now();
+		LocalDateTime createAt = LocalDateTime.now();
+		String createdBy = "AdminServer";
 		
+		User user = new User();
+		user.setAccount(account);
+		user.setPassword(password);
+		user.setStatus(status);
+		user.setEmail(email);
+		user.setPhoneNumber(phoneNumber);
+		user.setRegisteredAt(registeredAt);
+		user.setCreatedAt(createAt);
+		user.setCreatedBy(createdBy);
+		
+		User newUser = userRepository.save(user);
+		
+		Assert.assertNotNull(newUser);
+		
+		
+		
+		/*
 		User user = new User();
 		//user.setId(); auto increment 라 필요없음;
 		user.setAccount("testuser01");
@@ -38,13 +63,16 @@ public class UserRepositoryTest extends StudyApplicationTests{
 		user.setPhoneNumber("010-111-1111");
 		user.setCreatedAt(LocalDateTime.now());
 		user.setCreatedBy("admin");
-		
+
 		User newUser = userRepository.save(user);
 		System.out.println("newUser=  "+newUser);
+		*/
 	}
 	
-	@Test 
+	@Test
 	public void read() {
+		User user = userRepository.findFirstByPhoneNumberOrderByIdDesc("010-1111-2222");
+		Assert.assertNotNull(user);
 		
 		//findById  = select * from user where id=?
 		//Optional<User> user =userRepository.findById(2L);
@@ -63,8 +91,8 @@ public class UserRepositoryTest extends StudyApplicationTests{
 		//); 
 	}
 	
-	@Test
-	@Transactional
+	//@Test
+	//@Transactional
 	public void update() {
 		Optional<User> user =userRepository.findById(2L); //특정 유저를 셀렉트 해준다 그래야 특정유저를 수정할수 있기때문에
 		user.ifPresent(selectUser ->{
@@ -77,8 +105,8 @@ public class UserRepositoryTest extends StudyApplicationTests{
 		);
 	}
 	
-	@Test
-	@Transactional //실행을 하더라도 마지막에 롤백 해줌..
+	//@Test
+	//@Transactional //실행을 하더라도 마지막에 롤백 해줌..
 	public void delete() {
 		Optional<User> user =userRepository.findById(2L);
 		

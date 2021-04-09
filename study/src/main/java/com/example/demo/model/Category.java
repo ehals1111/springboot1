@@ -17,19 +17,20 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Category {
 	
-	private Long id;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
 	private String type;
 	
 	private String title;
 	
-	private LocalDateTime createAt;
+	private LocalDateTime createdAt;
 	
-	private String createBy;
+	private String createdBy;
 	
-	private LocalDateTime updateAt;
+	private LocalDateTime updatedAt;
 	
 	private String updatedBy;
 

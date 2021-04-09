@@ -1,13 +1,13 @@
 package com.example.demo.repository;
 
-import java.time.LocalDateTime;
 
-import org.junit.Assert;
+
+
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 import com.example.demo.StudyApplicationTests;
-import com.example.demo.model.OrderDetail;
+
 
 public class OderDetailRepositoryTest extends StudyApplicationTests{
 	
@@ -28,6 +28,6 @@ public class OderDetailRepositoryTest extends StudyApplicationTests{
 		
 	//OrderDetail newOderDetail= orderDetailRepository.save(orderDetail);
 		//Assert.assertNotNull(newOderDetail);
-		System.out.println("1");
+		//System.out.println("1");
 	} 
 }
