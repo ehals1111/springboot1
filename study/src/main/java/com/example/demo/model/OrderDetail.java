@@ -42,6 +42,10 @@ public class OrderDetail {
 	
 	private String updatedBy;
 	
+	private Long itemId;//어떠한 상품
+	
+	private Long orderGroupId; //어떤한 장바구니에
+	
 	
 	
 	
