@@ -31,7 +31,7 @@ public class OderDetailRepositoryTest extends StudyApplicationTests{
 		//어떤 사람?
 		//orderDetail.setOrderGroupId(1L);
 		//어떤 상품?
-		orderDetail.setItemId(1L);
+		//orderDetail.setItemId(1L);
 		orderDetail.setCreatedAt(LocalDateTime.now());
 		orderDetail.setCreatedBy("AdminServer");
 		
