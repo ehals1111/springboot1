@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.SearchParam;
+import com.example.demo.network.Header;
 
 @RestController //이 클래스는 컨트롤러다
 @RequestMapping("/api") // localhost:8080/api
@@ -36,5 +37,9 @@ public class getController {
 		return searchParam;
 	}
 	
+	@GetMapping("/header")
+	public Header getHeader() {
+		return Header.builder().resultCode("ok").description("ok").build();
+	}
 	
 }
