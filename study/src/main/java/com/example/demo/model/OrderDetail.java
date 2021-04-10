@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,7 +20,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Entity//order_detail 테이블 자동연결
 //lombok를 쓰게 되면 toString을 자동으로 만들어주는데 클래스끼리 상호참조하게 되면 toString을 계속 쓰게 되어 스택오버플로우 에러가 생김..
-//@ToString(exclude = {"user","item"})
+@ToString(exclude = {"orderGroup"})
 public class OrderDetail {
 	
 	@Id
@@ -44,7 +45,11 @@ public class OrderDetail {
 	
 	private Long itemId;//어떠한 상품
 	
-	private Long orderGroupId; //어떤한 장바구니에
+	//OrderDetail N: 1 OrderGroup
+	@ManyToOne
+	private OrderGroup orderGroup; //어떤한 장바구니에
+	
+	
 	
 	
 	

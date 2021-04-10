@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.StudyApplicationTests;
 
@@ -70,8 +70,24 @@ public class UserRepositoryTest extends StudyApplicationTests{
 	}
 	
 	@Test
+	@Transactional
 	public void read() {
 		User user = userRepository.findFirstByPhoneNumberOrderByIdDesc("010-1111-2222");
+		System.out.println(user);
+		if(user != null) { 
+			user.getOrderGroup().stream().forEach(orderGroup->{
+				System.out.println("수령인 :"+orderGroup.getRevName());
+				System.out.println("수령지 :"+orderGroup.getRevAddress());
+				System.out.println("총금액 :"+orderGroup.getTotalPrice());
+				System.out.println("총수량 :"+orderGroup.getTotalQuantity());
+				
+				orderGroup.getOrderDetailList().forEach(orderDetail ->{
+					System.out.println("주문의 상태 :" +orderDetail.getStatus());
+					System.out.println("도척예정일자 :" +orderDetail.getArrivalDate());
+				});
+			
+			});
+		}
 		Assert.assertNotNull(user);
 		
 		//findById  = select * from user where id=?

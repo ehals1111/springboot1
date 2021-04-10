@@ -14,12 +14,14 @@ import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data  //lombok에서 자동으로 toString 을 해줌
 @AllArgsConstructor
 @NoArgsConstructor //기본생성자
 @Entity // == table;
 //@Table(name="user")
+@ToString(exclude = {"orderGroup"})
 public class User { 
 	
 	@Id //primarykey
@@ -48,6 +50,13 @@ public class User {
 	private LocalDateTime updatedAt;
 	
 	private String updatedBy;
+	
+	
+	//User 1 : N OrderGrop
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	private List<OrderGroup> orderGroup;
+	
+	 
 	//user 입장에선 자신이 1이고 orderDetail은 n이다.
 	
 	//@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")//mappedBy = "user" OrderDetail클래스 안에 user변수를 매칭 시키겠다
