@@ -19,7 +19,7 @@ public class OderDetailRepositoryTest extends StudyApplicationTests{
 	@Autowired
 	private OderDetailRepository orderDetailRepository;
 	
-	@Test
+	//@Test
 	public void create() { 
 		OrderDetail orderDetail= new OrderDetail();
 		

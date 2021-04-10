@@ -13,6 +13,8 @@ import com.example.demo.StudyApplicationTests;
 
 import com.example.demo.model.User;
 
+import lombok.experimental.Accessors;
+
 
 
 
@@ -26,13 +28,13 @@ public class UserRepositoryTest extends StudyApplicationTests{
 	//junit 에러  해결을 못함 밑의 주소로 찾아 들어가보니 클래스가 없음..
 		//java.lang.NoClassDefFoundError: 
 		//org/junit/platform/commons/util/ClassNamePatternFilterUtilsjava.lang.NoClassDefFoundError: org/junit/platform/commons/util/ClassNamePatternFilterUtils
-	//@Test
+	@Test
 	public void create() {
-		String account = "Test01";
-		String password= "Test01";
+		String account = "Test03";
+		String password= "Test03";
 		String status ="REGISTERED";
 		String email = "Test01@gmail.com";
-		String phoneNumber = "010-1111-2222";
+		String phoneNumber = "010-1111-3333";
 		LocalDateTime registeredAt=LocalDateTime.now();
 		LocalDateTime createAt = LocalDateTime.now();
 		String createdBy = "AdminServer";
@@ -44,8 +46,20 @@ public class UserRepositoryTest extends StudyApplicationTests{
 		user.setEmail(email);
 		user.setPhoneNumber(phoneNumber);
 		user.setRegisteredAt(registeredAt);
-		user.setCreatedAt(createAt);
-		user.setCreatedBy(createdBy);
+		//user.setCreatedAt(createAt);
+		//user.setCreatedBy(createdBy);
+		
+		
+		//생성자를 일일히 순서대로 넣기 불편하기때문에 @Builder라는 패턴을 이용해 값 순서 상관 없이 생성자에 값을 셋팅 할수 있음
+		User u = User.builder()
+				.account(account)
+				.password(password)
+				.status(status)
+				.email(email)
+				.build();
+		
+		//@Accessors(chain= true)
+		user.setEmail(email).setPhoneNumber(phoneNumber).setStatus(status);
 		
 		User newUser = userRepository.save(user);
 		
@@ -69,8 +83,8 @@ public class UserRepositoryTest extends StudyApplicationTests{
 		*/
 	}
 	
-	@Test
-	@Transactional
+	//@Test
+	//@Transactional
 	public void read() {
 		User user = userRepository.findFirstByPhoneNumberOrderByIdDesc("010-1111-2222");
 		System.out.println(user);
