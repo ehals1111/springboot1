@@ -11,6 +11,8 @@ import com.example.demo.model.User;
 public interface UserRepository extends JpaRepository<User,Long> {
 	
 	User findFirstByPhoneNumberOrderByIdDesc(String phoneNumber);
+	
+	
 	/*
 	// JpaRepository<User << 테이블에 관련된 model명 ,Long   << 테이블의 primarykey의 데이터 타입>
 	
