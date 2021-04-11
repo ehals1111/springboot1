@@ -1,5 +1,6 @@
 package com.example.demo.controller.api;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,16 +14,26 @@ import com.example.demo.ifs.CrudInterface;
 import com.example.demo.network.Header;
 import com.example.demo.network.request.UserApiRequest;
 import com.example.demo.network.response.UserApiResponse;
+import com.example.demo.service.UserApiLogicService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping("/api/user")
 public class UserApiController implements CrudInterface<UserApiRequest ,UserApiResponse>{
 
+	@Autowired
+	private UserApiLogicService userApiLogicService;
+	
+	
 	@Override
 	@PostMapping("") //    /api/user
-	public Header<UserApiResponse> create(@RequestBody UserApiRequest Request) {
+	public Header<UserApiResponse> create(@RequestBody Header<UserApiRequest> request) {
 		// TODO Auto-generated method stub
-		return null;
+		log.info("{}",request);
+		
+		return userApiLogicService.create(request);
 	}
 
 	@Override
@@ -34,7 +45,7 @@ public class UserApiController implements CrudInterface<UserApiRequest ,UserApiR
 	
 	@Override
 	@PutMapping("") // /api/user
-	public Header<UserApiResponse> update(@RequestBody UserApiRequest request) {
+	public Header<UserApiResponse> update(@RequestBody Header<UserApiRequest> request) {
 		// TODO Auto-generated method stub
 		return null;
 	}

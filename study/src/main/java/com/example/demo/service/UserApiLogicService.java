@@ -1,9 +1,12 @@
 package com.example.demo.service;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.ifs.CrudInterface;
+import com.example.demo.model.User;
 import com.example.demo.network.Header;
 import com.example.demo.network.request.UserApiRequest;
 import com.example.demo.network.response.UserApiResponse;
@@ -19,9 +22,26 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
 	//2. user 생성
 	//3. 생성된 데이터 -> userApiResponse return
 	@Override
-	public Header<UserApiResponse> create(UserApiRequest request) {
+	public Header<UserApiResponse> create(Header<UserApiRequest> request) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		//1. request data
+		UserApiRequest userApiRequest = request.getData();
+		
+		//2. user 생성
+		User user = User.builder()
+				.account(userApiRequest.getAccount())
+				.password(userApiRequest.getPassword())
+				.status("REGISTERED")
+				.phoneNumber(userApiRequest.getPhoneNumber())
+				.email(userApiRequest.getEmail())
+				.registeredAt(LocalDateTime.now())
+				.build();
+				
+		User newUser = userRepository.save(user);
+		
+		
+		return response(newUser);
 	}
 
 	@Override
@@ -31,7 +51,7 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
 	}
 
 	@Override
-	public Header<UserApiResponse> update(UserApiRequest request) {
+	public Header<UserApiResponse> update(Header<UserApiRequest> request) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -42,5 +62,19 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
 		return null;
 	}
 	
-	
+	private Header<UserApiResponse> response(User user){
+		
+		UserApiResponse userApiResponse = UserApiResponse.builder()
+				.id(user.getId())
+				.account(user.getAccount())
+				.password(user.getPassword())
+				.email(user.getEmail())
+				.phoneNumber(user.getPhoneNumber())
+				.status(user.getStatus())
+				.registeredAt(user.getRegisteredAt())
+				.unregisteredAt(user.getUnregisteredAt())
+				.build();
+		// header data return
+		return Header.OK(userApiResponse);
+	}
 }
