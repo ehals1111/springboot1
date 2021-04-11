@@ -5,33 +5,36 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.ifs.CrudInterface;
 import com.example.demo.network.Header;
+import com.example.demo.network.request.UserApiRequest;
+import com.example.demo.network.response.UserApiResponse;
 
 @RestController
 @RequestMapping("/api/user")
-public class UserApiController implements CrudInterface{
+public class UserApiController implements CrudInterface<UserApiRequest ,UserApiResponse>{
 
 	@Override
 	@PostMapping("") //    /api/user
-	public Header create() {
+	public Header<UserApiResponse> create(@RequestBody UserApiRequest Request) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	@GetMapping("{id}") // /api/user/{id}
-	public Header read(@PathVariable(name = "id")Long id) {
+	public Header<UserApiResponse> read(@PathVariable(name = "id")Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	@Override
 	@PutMapping("") // /api/user
-	public Header update() {
+	public Header<UserApiResponse> update(@RequestBody UserApiRequest request) {
 		// TODO Auto-generated method stub
 		return null;
 	}
