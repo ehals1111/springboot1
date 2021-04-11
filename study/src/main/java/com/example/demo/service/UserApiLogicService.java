@@ -1,9 +1,11 @@
 package com.example.demo.service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import com.example.demo.ifs.CrudInterface;
 import com.example.demo.model.User;
@@ -47,13 +49,41 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
 	@Override
 	public Header<UserApiResponse> read(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		//id -> repository getOne , getById
+				
+				Optional<User> optional = userRepository.findById(id);
+		
+				
+		
+		return optional.map(user -> response(user)).orElseGet(()->Header.ERROR("데이터 없음"));
 	}
 
 	@Override
 	public Header<UserApiResponse> update(Header<UserApiRequest> request) {
 		// TODO Auto-generated method stub
-		return null;
+		//1.data
+		UserApiRequest userApiRequest = request.getData();
+		
+		//2.id -> user 데이터를 찾고
+		Optional<User> optional = userRepository.findById(userApiRequest.getId());
+		
+		return optional.map(user -> {
+			//3. update
+			user.setAccount(userApiRequest.getAccount())
+			.setPassword(userApiRequest.getPassword())
+			.setStatus(userApiRequest.getStatus())
+			.setPhoneNumber(userApiRequest.getPhoneNumber())
+			.setEmail(userApiRequest.getEmail())
+			.setRegisteredAt(userApiRequest.getRegisteredAt())
+			.setUnregisteredAt(userApiRequest.getUnregisteredAt());
+			return user;
+		})
+		.map(user -> userRepository.save(user))//update 가 되고
+		.map(user -> response(user)) //4.userApiResponse
+		
+		.orElseGet(()->Header.ERROR("데이터 없음")); 
+		
 	}
 
 	@Override

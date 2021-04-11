@@ -14,6 +14,7 @@ import com.example.demo.ifs.CrudInterface;
 import com.example.demo.network.Header;
 import com.example.demo.network.request.UserApiRequest;
 import com.example.demo.network.response.UserApiResponse;
+import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserApiLogicService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -40,14 +41,16 @@ public class UserApiController implements CrudInterface<UserApiRequest ,UserApiR
 	@GetMapping("{id}") // /api/user/{id}
 	public Header<UserApiResponse> read(@PathVariable(name = "id")Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		log.info("read id :{}",id);
+		
+		return userApiLogicService.read(id);
 	}
 	
 	@Override
 	@PutMapping("") // /api/user
 	public Header<UserApiResponse> update(@RequestBody Header<UserApiRequest> request) {
 		// TODO Auto-generated method stub
-		return null;
+		return  userApiLogicService.update(request);
 	}
 
 	@Override
