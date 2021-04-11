@@ -34,7 +34,7 @@ public class ItemApiController implements CrudInterface<ItemApiRequest, ItemApiR
 	@GetMapping("{id}") // /api/item/1
 	public Header<ItemApiResponse> read(@PathVariable Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return itemApiLogicService.read(id);
 	}
 
 	@Override
